@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Spicy Chicken Burger",
+        "price": "12.99",
+        "description": "Delicious chicken burger with spicy sauce."
+    },
+    {
+        "name": "Grilled Veggie Wrap",
+        "price": "10.99",
+        "description": "Healthy wrap loaded with fresh veggies."
+    }
+]
+
+{
+  "name": "gotnochill",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
