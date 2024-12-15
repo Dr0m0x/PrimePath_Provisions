@@ -1,4 +1,3 @@
-Here’s a clean and professional README.md file for your GotNoChill - Fresh Food Delivery project. It includes sections for project description, setup instructions, features, and usage:
 
 GotNoChill - Fresh Food Delivery 🚀
 
