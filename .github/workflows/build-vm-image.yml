@@ -1,0 +1,33 @@
+name: Build Custom VM Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-image:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Install Required Tools
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y packer jq
+
+    - name: Build VM Image with Packer
+      run: |
+        packer init ./packer-config.pkr.hcl
+        packer build -var subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }} \
+                     -var tenant_id=${{ secrets.AZURE_TENANT_ID }} \
+                     -var client_id=${{ secrets.AZURE_CLIENT_ID }} \
+                     -var client_secret=${{ secrets.AZURE_CLIENT_SECRET }} \
+                     ./packer-config.pkr.hcl
